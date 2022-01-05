@@ -11,9 +11,9 @@ import CoreData
 
 class NotesTableViewCell: UITableViewCell{
     
-    @IBOutlet weak var noticeName: UILabel!
-    @IBOutlet weak var noticeDate: UILabel!
-    @IBOutlet weak var noticeImageView: UIImageView!
+    @IBOutlet weak var notesNameLabel: UILabel!
+    @IBOutlet weak var notesDateLabel: UILabel!
+    @IBOutlet weak var notesImageView: UIImageView!
 }
 
 
@@ -24,7 +24,6 @@ class NotesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadNotesFromCoreData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,13 +37,7 @@ class NotesTableViewController: UITableViewController {
     
     
     func loadNotesFromCoreData(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let notes = repository.readAll(appDelegat: appDelegate, managedContext: managedContext)
-        
+        let notes = repository.readAll()
         notesList = notes
     }
     
@@ -65,9 +58,9 @@ class NotesTableViewController: UITableViewController {
 
         let note = notesList[indexPath.row]
         
-        cell.noticeName?.text = note.name
-        cell.noticeDate?.text = note.date
-        cell.noticeImageView?.image = UIImage(named: "notiz")
+        cell.notesNameLabel?.text = note.name
+        cell.notesDateLabel?.text = note.date
+        cell.notesImageView?.image = UIImage(named: "notiz")
         
 
         return cell

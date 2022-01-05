@@ -15,7 +15,6 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var entryTextView: UITextView!
-    
 
     
     override func viewDidLoad() {
@@ -23,15 +22,9 @@ class EntryViewController: UIViewController {
     }
     
     @IBAction func saveEntry(_ sender: Any) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
         let note = newNote(name: nameTextField.text!, date: dateTextField.text!, entry: entryTextView.text!)
-        
-        repository.create(newNote: note, appDelegat: appDelegate, managedContext: managedContext)
+    
+        repository.create(newNote: note)
         
         finishProcess()
     }
@@ -41,16 +34,7 @@ class EntryViewController: UIViewController {
         dateTextField.text! = ""
         entryTextView.text! = "Enter your note ..."
         
-        /*
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let notesTableView = storyBoard.instantiateViewController(identifier: "NotesTableView") as UIViewController
-        self.navigationController?.pushViewController(notesTableView, animated: true)
-        */
-        /*
-        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "NotesTableView") as? NotesTableViewController)!
-        
-        self.present(vc, animated: true, completion: nil)
- */
+        self.tabBarController?.selectedIndex = 0
         
     }
 
@@ -68,3 +52,13 @@ class EntryViewController: UIViewController {
     */
 
 }
+
+/*
+ guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+     return
+ }
+ 
+ let managedContext = appDelegate.persistentContainer.viewContext
+ 
+ 
+ */

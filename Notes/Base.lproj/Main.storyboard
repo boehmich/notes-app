@@ -173,9 +173,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="noticeDate" destination="6OG-Ua-tuU" id="KRu-wF-VBm"/>
-                                    <outlet property="noticeImageView" destination="Op9-WE-PRi" id="hUD-iL-WeF"/>
-                                    <outlet property="noticeName" destination="tey-Lb-Ptf" id="xSe-2S-aGg"/>
+                                    <outlet property="notesDateLabel" destination="6OG-Ua-tuU" id="qoZ-TP-2Jd"/>
+                                    <outlet property="notesImageView" destination="Op9-WE-PRi" id="DAc-1h-71N"/>
+                                    <outlet property="notesNameLabel" destination="tey-Lb-Ptf" id="VEy-HU-E6g"/>
                                     <segue destination="6tI-cc-YDw" kind="show" identifier="Note" id="TxC-wd-2qi"/>
                                 </connections>
                             </tableViewCell>

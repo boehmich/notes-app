@@ -7,12 +7,18 @@
 //
 
 import Foundation
-//import UIKit
+import UIKit
 import CoreData
 
 class Repository {
     
-    func create(newNote: newNote, appDelegat: AppDelegate, managedContext: NSManagedObjectContext){
+    var managedContext: NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        return (appDelegate?.persistentContainer.viewContext)!
+    }
+    
+    
+    func create(newNote: newNote){
         let noteEntity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)!
         
         let note = NSManagedObject(entity: noteEntity, insertInto: managedContext)
@@ -27,7 +33,7 @@ class Repository {
         }
     }
     
-    func readAll(appDelegat: AppDelegate, managedContext: NSManagedObjectContext) -> Array<Note>{
+    func readAll() -> Array<Note>{
         let noteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
                
         let notes = try! managedContext.fetch(noteFetch) as! [Note]
@@ -35,13 +41,14 @@ class Repository {
         return notes
     }
     
-    
-    func update(note: Note, appDelegat: AppDelegate, managedContext: NSManagedObjectContext){
-        
-    }
-    
     func delete(note: Note){
+        managedContext.delete(note)
         
+        do{
+            try managedContext.save()
+        } catch let error as NSError{
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
     
 }

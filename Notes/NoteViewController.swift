@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import SwiftUI
 
 class NoteViewController: UIViewController {
     let repository = Repository()
@@ -34,18 +33,7 @@ class NoteViewController: UIViewController {
     }
     
     @IBAction func deleteNote(_ sender: Any) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        managedContext.delete(note!)
-        do{
-            try managedContext.save()
-        } catch let error as NSError{
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        repository.delete(note: note as! Note)
         
         self.navigationController!.popViewController(animated: true)
     }
@@ -67,5 +55,13 @@ class NoteViewController: UIViewController {
        print(note?.value(forKey: "name") ?? "any Name")
        print(note?.value(forKey: "date") ?? "any Date")
        print(note?.value(forKey: "entry") ?? "any Entry")
+*/
+       /*
+       managedContext.delete(note!)
+       do{
+           try managedContext.save()
+       } catch let error as NSError{
+           print("Could not save. \(error), \(error.userInfo)")
+       }
 */
        
