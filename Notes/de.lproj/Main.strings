@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "2Rf-cn-t9A"; */
+"2Rf-cn-t9A.text" = "Name:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "6OG-Ua-tuU"; */
+"6OG-Ua-tuU.text" = "Label";
+
+/* Class = "UIViewController"; title = "Note"; ObjectID = "6tI-cc-YDw"; */
+"6tI-cc-YDw.title" = "Note";
+
+/* Class = "UIButton"; normalTitle = "save"; ObjectID = "927-wJ-hJb"; */
+"927-wJ-hJb.normalTitle" = "save";
+
+/* Class = "UITextView"; text = "Enter your note ..."; ObjectID = "HdJ-UQ-UgQ"; */
+"HdJ-UQ-UgQ.text" = "Enter your note ...";
+
+/* Class = "UITabBarItem"; title = "List"; ObjectID = "JeL-5t-yZq"; */
+"JeL-5t-yZq.title" = "Liste";
+
+/* Class = "UIButton"; normalTitle = "delete"; ObjectID = "Ysk-Fc-GSm"; */
+"Ysk-Fc-GSm.normalTitle" = "delete";
+
+/* Class = "UILabel"; text = "Entry:"; ObjectID = "ZNx-Xo-eed"; */
+"ZNx-Xo-eed.text" = "Entry:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dzA-7d-pII"; */
+"dzA-7d-pII.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Entry"; ObjectID = "hrg-4j-JJj"; */
+"hrg-4j-JJj.title" = "Eintrag";
+
+/* Class = "UILabel"; text = "Date:"; ObjectID = "iR9-Hn-H4i"; */
+"iR9-Hn-H4i.text" = "Date:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "oQR-ba-lLq"; */
+"oQR-ba-lLq.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "tey-Lb-Ptf"; */
+"tey-Lb-Ptf.text" = "Label";

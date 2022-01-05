@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Notes
+
+  Created by Boehmich on 05.01.22.
+  Copyright © 2022 boehmich. All rights reserved.
+*/
+
+"note" = "Note";
+"notes" = "Notes";
+"name" = "Name";
+"date" = "Date";
+"entry" = "Entry";
+"save" = "save";
+"delete" = "delete";
+"list" = "List";
+"entry" = "Entry";
+"placeholder_entry" = "Enter your note ...";
+"back" = "back";
+
+

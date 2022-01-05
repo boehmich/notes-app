@@ -17,9 +17,11 @@ class NoteViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var entryTextView: UITextView!
     
+    @IBOutlet weak var deleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteButton.setTitle(NSLocalizedString("delete", comment: ""), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {

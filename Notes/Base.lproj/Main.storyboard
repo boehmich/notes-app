@@ -249,6 +249,7 @@
                     <navigationItem key="navigationItem" id="eVe-OB-Zqe"/>
                     <connections>
                         <outlet property="dateLabel" destination="dzA-7d-pII" id="Gdi-UP-dSy"/>
+                        <outlet property="deleteButton" destination="Ysk-Fc-GSm" id="wP6-8e-mEk"/>
                         <outlet property="entryTextView" destination="177-Fk-Ivp" id="Aeh-2L-wFj"/>
                         <outlet property="nameLabel" destination="oQR-ba-lLq" id="Vym-3z-aoQ"/>
                     </connections>

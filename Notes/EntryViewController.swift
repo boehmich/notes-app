@@ -19,6 +19,7 @@ class EntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
     }
     
     @IBAction func saveEntry(_ sender: Any) {
@@ -32,15 +33,13 @@ class EntryViewController: UIViewController {
     func finishProcess(){
         nameTextField.text! = ""
         dateTextField.text! = ""
-        entryTextView.text! = "Enter your note ..."
+        entryTextView.text! = NSLocalizedString("placeholder_entry", comment: "")
         
         self.tabBarController?.selectedIndex = 0
         
     }
 
-    
-
-    
+        
     /*
     // MARK: - Navigation
 

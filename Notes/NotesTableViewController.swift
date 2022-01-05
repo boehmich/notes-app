@@ -35,13 +35,11 @@ class NotesTableViewController: UITableViewController {
         notesList = []
     }
     
-    
     func loadNotesFromCoreData(){
         let notes = repository.readAll()
         notesList = notes
     }
     
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,7 +50,6 @@ class NotesTableViewController: UITableViewController {
         return notesList.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath) as! NotesTableViewCell
 
@@ -60,22 +57,14 @@ class NotesTableViewController: UITableViewController {
         
         cell.notesNameLabel?.text = note.name
         cell.notesDateLabel?.text = note.date
-        cell.notesImageView?.image = UIImage(named: "notiz")
+        cell.notesImageView?.image = UIImage(named: "note")
         
-
         return cell
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Notizen"
+        return NSLocalizedString("notes", comment: "")
     }
-    
-    /*
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedNote = notesList[indexPath.row]
-        self.performSegue(withIdentifier: "Note", sender: nil)
-    }
-    */
     
     // MARK: - Navigation
 
@@ -87,6 +76,11 @@ class NotesTableViewController: UITableViewController {
             }
         }
     }
-    
-
 }
+
+/*
+override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    selectedNote = notesList[indexPath.row]
+    self.performSegue(withIdentifier: "Note", sender: nil)
+}
+*/
