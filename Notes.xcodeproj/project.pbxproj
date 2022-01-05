@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B896BE327858CC40062D901 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B896BE227858CC40062D901 /* Repository.swift */; };
+		3B896BE52785A1410062D901 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B896BE42785A1410062D901 /* NoteViewController.swift */; };
 		3BFC8F9C2784BA720038BDBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8F9B2784BA720038BDBB /* AppDelegate.swift */; };
 		3BFC8F9E2784BA720038BDBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8F9D2784BA720038BDBB /* SceneDelegate.swift */; };
 		3BFC8FA32784BA720038BDBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC8FA12784BA720038BDBB /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B896BE227858CC40062D901 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		3B896BE42785A1410062D901 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		3BFC8F982784BA720038BDBB /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFC8F9B2784BA720038BDBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BFC8F9D2784BA720038BDBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +71,9 @@
 				3BFC8FA12784BA720038BDBB /* Main.storyboard */,
 				3BFC8FB82784E3390038BDBB /* EntryViewController.swift */,
 				3BFC8FB22784BBC40038BDBB /* NotesTableViewController.swift */,
+				3B896BE42785A1410062D901 /* NoteViewController.swift */,
 				3BFC8FB42784BED90038BDBB /* Types.swift */,
+				3B896BE227858CC40062D901 /* Repository.swift */,
 				3BFC8FA72784BA730038BDBB /* Assets.xcassets */,
 				3BFC8FA92784BA730038BDBB /* LaunchScreen.storyboard */,
 				3BFC8FAC2784BA730038BDBB /* Info.plist */,
@@ -147,6 +153,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B896BE52785A1410062D901 /* NoteViewController.swift in Sources */,
+				3B896BE327858CC40062D901 /* Repository.swift in Sources */,
 				3BFC8F9C2784BA720038BDBB /* AppDelegate.swift in Sources */,
 				3BFC8FB32784BBC40038BDBB /* NotesTableViewController.swift in Sources */,
 				3BFC8F9E2784BA720038BDBB /* SceneDelegate.swift in Sources */,

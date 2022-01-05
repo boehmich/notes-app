@@ -10,15 +10,16 @@ import UIKit
 import CoreData
 
 class EntryViewController: UIViewController {
-
+    var repository = Repository()
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var entryTextView: UITextView!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
     }
     
     @IBAction func saveEntry(_ sender: Any) {
@@ -28,30 +29,33 @@ class EntryViewController: UIViewController {
         
         let managedContext = appDelegate.persistentContainer.viewContext
         
-        let noteEntity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)!
+        let note = newNote(name: nameTextField.text!, date: dateTextField.text!, entry: entryTextView.text!)
         
-        let note = NSManagedObject(entity: noteEntity, insertInto: managedContext)
-        note.setValue(nameTextField.text!, forKey: "name")
-        note.setValue(dateTextField.text!, forKey: "date")
-        note.setValue(entryTextView.text!, forKey: "entry")
+        repository.create(newNote: note, appDelegat: appDelegate, managedContext: managedContext)
         
-        do{
-            try managedContext.save()
-        } catch let error as NSError{
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-        
-        let noteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-        
-        let notes = try! managedContext.fetch(noteFetch) as! [Note]
-        
-        
-        for note in notes {
-            print(note.name!)
-            print(note.date!)
-            print(note.entry!)
-        }
+        finishProcess()
     }
+    
+    func finishProcess(){
+        nameTextField.text! = ""
+        dateTextField.text! = ""
+        entryTextView.text! = "Enter your note ..."
+        
+        /*
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let notesTableView = storyBoard.instantiateViewController(identifier: "NotesTableView") as UIViewController
+        self.navigationController?.pushViewController(notesTableView, animated: true)
+        */
+        /*
+        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "NotesTableView") as? NotesTableViewController)!
+        
+        self.present(vc, animated: true, completion: nil)
+ */
+        
+    }
+
+    
+
     
     /*
     // MARK: - Navigation

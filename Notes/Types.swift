@@ -8,3 +8,10 @@
 
 import Foundation
 
+struct newNote {
+    var name: String
+    var date: String
+    var entry: String
+}
+
+
