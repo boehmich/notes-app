@@ -20,7 +20,6 @@ class NotesTableViewCell: UITableViewCell{
 class NotesTableViewController: UITableViewController {
     let repository = Repository()
     var notesList = [Note]()
-    var selectedNote: NSManagedObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,10 +76,3 @@ class NotesTableViewController: UITableViewController {
         }
     }
 }
-
-/*
-override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    selectedNote = notesList[indexPath.row]
-    self.performSegue(withIdentifier: "Note", sender: nil)
-}
-*/

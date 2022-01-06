@@ -8,24 +8,56 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
-class EntryViewController: UIViewController {
-    var repository = Repository()
+class EntryViewController: UIViewController, UITextViewDelegate, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+    let repository = Repository()
+    let recorderService = AVAudioRecorderPlayerService()
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var entryTextView: UITextView!
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var entryLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    var audioRecorder: AVAudioRecorder!
+    var soundFileUrl: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        entryTextView.delegate = self
+        entryTextView.text! = NSLocalizedString("placeholder_entry", comment: "")
+        nameLabel.text! = "\(NSLocalizedString("name", comment: "")):"
+        dateLabel.text! = "\(NSLocalizedString("date", comment: "")):"
+        entryLabel.text! = "\(NSLocalizedString("entry", comment: "")):"
+        saveButton.setTitle(NSLocalizedString("save", comment: ""), for: .normal)
+        
+        recorderService.prepareAudioRecorder()
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView){
+        if textView.text! == NSLocalizedString("placeholder_entry", comment: "") {
+            textView.text! = ""
+        }
+    }
     
+    @IBAction func recordButtonPressed(_ sender: Any) {
+        recorderService.startRecording()
+    }
+    
+    @IBAction func stopButtonPressed(_ sender: Any) {
+        recorderService.stopRecording()
     }
     
     @IBAction func saveEntry(_ sender: Any) {
         let note = newNote(name: nameTextField.text!, date: dateTextField.text!, entry: entryTextView.text!)
     
         repository.create(newNote: note)
+        
+        recorderService.updateSoundFileUrl(fileName: nameTextField.text!)
         
         finishProcess()
     }
@@ -51,13 +83,3 @@ class EntryViewController: UIViewController {
     */
 
 }
-
-/*
- guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-     return
- }
- 
- let managedContext = appDelegate.persistentContainer.viewContext
- 
- 
- */

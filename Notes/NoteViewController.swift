@@ -8,10 +8,13 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class NoteViewController: UIViewController {
     let repository = Repository()
+    let audioService = AVAudioRecorderPlayerService()
     var note: NSManagedObject?
+    var name: String!
      
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -19,16 +22,19 @@ class NoteViewController: UIViewController {
     
     @IBOutlet weak var deleteButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         deleteButton.setTitle(NSLocalizedString("delete", comment: ""), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadNote()
+        setFields()
+        name = nameLabel.text!
+        audioService.prepareAudioPlayer(noteName: name)
     }
     
-    func loadNote(){
+    func setFields(){
         nameLabel.text = note?.value(forKey: "name") as? String
         dateLabel.text = note?.value(forKey: "date") as? String
         entryTextView.text = note?.value(forKey: "entry") as? String
@@ -36,11 +42,14 @@ class NoteViewController: UIViewController {
     
     @IBAction func deleteNote(_ sender: Any) {
         repository.delete(note: note as! Note)
-        
+        audioService.deleteSoundFile(noteName: name)
         self.navigationController!.popViewController(animated: true)
     }
     
     
+    @IBAction func playVoiceMessage(_ sender: Any) {
+        audioService.play()
+    }
     /*
     // MARK: - Navigation
 
@@ -53,17 +62,37 @@ class NoteViewController: UIViewController {
 
 }
 
-       /*
-       print(note?.value(forKey: "name") ?? "any Name")
-       print(note?.value(forKey: "date") ?? "any Date")
-       print(note?.value(forKey: "entry") ?? "any Entry")
-*/
-       /*
-       managedContext.delete(note!)
-       do{
-           try managedContext.save()
-       } catch let error as NSError{
-           print("Could not save. \(error), \(error.userInfo)")
-       }
-*/
+/*
+ var audioPlayer: AVAudioPlayer!
+ var soundFileUrl: URL?
+ 
+ func setupAudioPlayer(){
+     let fileManager = FileManager.default
+     let dirPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+     let fileName = nameLabel.text!
+     soundFileUrl = dirPath[0].appendingPathComponent("\(String(describing: fileName)).caf")
+     print(soundFileUrl!)
+     
+     let audioSession = AVAudioSession.sharedInstance()
+     
+     do {
+         try
+             audioSession.setCategory(.playAndRecord, mode: .default)
+     } catch let error as NSError {
+         print(error)
+     }
+ }
+ 
+ func play (){
+     do{
+               try audioPlayer = AVAudioPlayer(contentsOf: soundFileUrl!)
+               audioPlayer?.delegate = self as? AVAudioPlayerDelegate
+               audioPlayer?.prepareToPlay()
+               audioPlayer?.play()
+           } catch let error as NSError {
+               print(error)
+           }
+     }
+ */
+
        

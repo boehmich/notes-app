@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B7682C727870E8F00CEF2EF /* AVAudioRecorderPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7682C627870E8F00CEF2EF /* AVAudioRecorderPlayerService.swift */; };
 		3B896BE327858CC40062D901 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B896BE227858CC40062D901 /* Repository.swift */; };
 		3B896BE52785A1410062D901 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B896BE42785A1410062D901 /* NoteViewController.swift */; };
 		3B896BE82785FA760062D901 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B896BEA2785FA760062D901 /* Localizable.strings */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B7682C627870E8F00CEF2EF /* AVAudioRecorderPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAudioRecorderPlayerService.swift; sourceTree = "<group>"; };
 		3B896BE227858CC40062D901 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		3B896BE42785A1410062D901 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		3B896BE92785FA760062D901 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B7682C527870E3000CEF2EF /* services */ = {
+			isa = PBXGroup;
+			children = (
+				3B7682C627870E8F00CEF2EF /* AVAudioRecorderPlayerService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		3BFC8F8F2784BA720038BDBB = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +81,7 @@
 		3BFC8F9A2784BA720038BDBB /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				3B7682C527870E3000CEF2EF /* services */,
 				3BFC8F9B2784BA720038BDBB /* AppDelegate.swift */,
 				3BFC8F9D2784BA720038BDBB /* SceneDelegate.swift */,
 				3BFC8FA12784BA720038BDBB /* Main.storyboard */,
@@ -166,6 +177,7 @@
 				3BFC8F9C2784BA720038BDBB /* AppDelegate.swift in Sources */,
 				3BFC8FB32784BBC40038BDBB /* NotesTableViewController.swift in Sources */,
 				3BFC8F9E2784BA720038BDBB /* SceneDelegate.swift in Sources */,
+				3B7682C727870E8F00CEF2EF /* AVAudioRecorderPlayerService.swift in Sources */,
 				3BFC8FB52784BED90038BDBB /* Types.swift in Sources */,
 				3BFC8FA62784BA720038BDBB /* Notes.xcdatamodeld in Sources */,
 				3BFC8FB92784E3390038BDBB /* EntryViewController.swift in Sources */,
