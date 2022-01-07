@@ -19,6 +19,7 @@ class NotesTableViewCell: UITableViewCell{
 
 class NotesTableViewController: UITableViewController {
     let repository = Repository()
+    let mockData = MockData()
     var notesList = [Note]()
     
     override func viewDidLoad() {

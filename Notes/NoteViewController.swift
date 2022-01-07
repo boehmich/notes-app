@@ -22,10 +22,12 @@ class NoteViewController: UIViewController {
     
     @IBOutlet weak var deleteButton: UIButton!
     
+    @IBOutlet weak var playButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         deleteButton.setTitle(NSLocalizedString("delete", comment: ""), for: .normal)
+        playButton.setTitle(NSLocalizedString("voice_message", comment: ""), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {

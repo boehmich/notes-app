@@ -67,6 +67,8 @@ class AVAudioRecorderPlayerService{
         }
 
         audioRecorder.record()
+        
+    
     }
     
     func stopRecording(){

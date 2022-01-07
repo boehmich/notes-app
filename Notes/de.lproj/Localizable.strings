@@ -16,4 +16,6 @@
 "list" = "Liste";
 "entry" = "Eintrag";
 "placeholder_entry" = "Gib deine Notiz ein ...";
-"back" = "zurück";
+"voice_message" = "Sprachnachricht";
+"record" = "aufnehmen";
+"stop" = "beenden";

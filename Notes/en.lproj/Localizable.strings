@@ -16,6 +16,8 @@
 "list" = "List";
 "entry" = "Entry";
 "placeholder_entry" = "Enter your note ...";
-"back" = "back";
+"voice_message" = "Voice Message";
+"record" = "record";
+"stop" = "stop";
 
 
