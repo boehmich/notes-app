@@ -10,9 +10,18 @@ import UIKit
 import CoreData
 import AVFoundation
 
+struct newNote {
+    var name: String
+    var date: Date
+    var entry: String
+}
+
+
 class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     let repository = Repository()
+    let dateFormatterService = DateFormatterService()
     let audioService = AVAudioRecorderPlayerService()
+    let fileManagerService = FileManagerService()
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
@@ -27,6 +36,7 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordingImageView: UIImageView!
     
+    var didRecord = false
     var timer: Timer!
     
     override func viewDidLoad() {
@@ -42,15 +52,10 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setCurrentDay()
+        //set the current time in the date text field
+        dateTextField.text = dateFormatterService.dateToString(date: Date())
     }
     
-    func setCurrentDay(){
-        let currentDateTime = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        dateTextField.text = formatter.string(from: currentDateTime)
-    }
     
     func setDatePicker(){
         let datePickerView = UIDatePicker()
@@ -61,9 +66,7 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @objc func handleDatePicker(sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        dateTextField.text = dateFormatter.string(from: sender.date)
+        dateTextField.text = dateFormatterService.dateToString(date: sender.date)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,8 +87,9 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
 
-    
     @IBAction func recordButtonPressed(_ sender: Any) {
+        didRecord = true
+        
         styleRecordButton()
         
         audioService.startRecording()
@@ -105,7 +109,6 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     private func animateImageView(){
-        
         self.recordingImageView.transform = CGAffineTransform(scaleX: 0, y: 0)
             UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                     self.recordingImageView.transform = .identity
@@ -124,21 +127,24 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @IBAction func saveEntry(_ sender: Any) {
-        let note = newNote(name: nameTextField.text!, date: dateTextField.text!, entry: entryTextView.text!)
+        let date = dateFormatterService.stringToDate(stringDate: dateTextField.text!)
+        let note = newNote(name: nameTextField.text!, date: date, entry: entryTextView.text!)
     
         repository.create(newNote: note)
         
-        audioService.updateSoundFileUrl(fileName: nameTextField.text!)
+        if didRecord {
+            fileManagerService.updateSoundFileUrl(originName: Constants.defaultSoundFileName, newName: nameTextField.text!)
+        }
         
-        finishProcess()
+        resetTextFields()
+        
+        self.tabBarController?.selectedIndex = 0
     }
     
-    func finishProcess(){
+    private func resetTextFields(){
         nameTextField.text! = ""
         dateTextField.text! = ""
         entryTextView.text! = NSLocalizedString("placeholder_entry", comment: "")
-        
-        self.tabBarController?.selectedIndex = 0
         
     }
     

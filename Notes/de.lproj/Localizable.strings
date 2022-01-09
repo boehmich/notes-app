@@ -19,3 +19,5 @@
 "voice_message" = "Sprachnachricht";
 "record" = "aufnehmen";
 "stop" = "beenden";
+"cancel" = "abbrechen";
+"delete_message" = "Wollen Sie diese Notitz wirklich löschen?";

@@ -286,7 +286,7 @@
                                     <action selector="deleteNote:" destination="6tI-cc-YDw" eventType="touchUpInside" id="ulQ-bf-dbI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiU-2F-TlW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiU-2F-TlW">
                                 <rect key="frame" x="20" y="480" width="38" height="30"/>
                                 <state key="normal" title="play"/>
                                 <connections>
@@ -300,15 +300,17 @@
                             <constraint firstItem="dzA-7d-pII" firstAttribute="leading" secondItem="uZx-h8-C9A" secondAttribute="leading" constant="20" id="ERt-vj-OMK"/>
                             <constraint firstItem="uZx-h8-C9A" firstAttribute="trailing" secondItem="177-Fk-Ivp" secondAttribute="trailing" constant="20" id="JN8-j6-c5M"/>
                             <constraint firstItem="ZiU-2F-TlW" firstAttribute="top" secondItem="177-Fk-Ivp" secondAttribute="bottom" constant="30" id="KgV-Q9-eBS"/>
-                            <constraint firstItem="ZiU-2F-TlW" firstAttribute="leading" secondItem="uZx-h8-C9A" secondAttribute="leading" constant="20" id="KiB-bF-Xjz"/>
+                            <constraint firstItem="ZiU-2F-TlW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uZx-h8-C9A" secondAttribute="leading" id="KiB-bF-Xjz"/>
                             <constraint firstItem="177-Fk-Ivp" firstAttribute="top" secondItem="dzA-7d-pII" secondAttribute="bottom" constant="15" id="KtE-Mi-sJx"/>
                             <constraint firstItem="oQR-ba-lLq" firstAttribute="leading" secondItem="uZx-h8-C9A" secondAttribute="leading" constant="20" id="QgO-JZ-fnV"/>
                             <constraint firstItem="177-Fk-Ivp" firstAttribute="leading" secondItem="uZx-h8-C9A" secondAttribute="leading" constant="20" id="QsE-uv-Puf"/>
                             <constraint firstItem="dzA-7d-pII" firstAttribute="top" secondItem="oQR-ba-lLq" secondAttribute="bottom" constant="15" id="YdK-7I-Ra7"/>
                             <constraint firstItem="Ysk-Fc-GSm" firstAttribute="centerX" secondItem="agz-1q-57p" secondAttribute="centerX" id="emu-bx-eOG"/>
                             <constraint firstItem="Ysk-Fc-GSm" firstAttribute="top" secondItem="177-Fk-Ivp" secondAttribute="bottom" constant="64" id="evS-bl-OHD"/>
+                            <constraint firstItem="ZiU-2F-TlW" firstAttribute="leading" secondItem="uZx-h8-C9A" secondAttribute="leading" constant="20" id="g7f-N0-sYJ"/>
                             <constraint firstItem="uZx-h8-C9A" firstAttribute="trailing" secondItem="oQR-ba-lLq" secondAttribute="trailing" constant="20" id="kAM-bD-5nz"/>
                             <constraint firstItem="oQR-ba-lLq" firstAttribute="top" secondItem="uZx-h8-C9A" secondAttribute="top" constant="40" id="kEz-u4-CMZ"/>
+                            <constraint firstItem="uZx-h8-C9A" firstAttribute="trailing" secondItem="ZiU-2F-TlW" secondAttribute="trailing" constant="356" id="lrD-Q1-Zsw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZx-h8-C9A"/>
                     </view>

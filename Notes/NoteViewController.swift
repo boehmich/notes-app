@@ -10,9 +10,11 @@ import UIKit
 import CoreData
 import AVFoundation
 
-class NoteViewController: UIViewController {
+class NoteViewController: UIViewController, UIAlertViewDelegate {
     let repository = Repository()
     let audioService = AVAudioRecorderPlayerService()
+    let dateFormatterService = DateFormatterService()
+    let fileManagerService = FileManagerService()
     var note: NSManagedObject?
     var name: String!
      
@@ -33,25 +35,48 @@ class NoteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setFields()
         name = nameLabel.text!
+        checkIfSoundFileAvailable()
         audioService.prepareAudioPlayer(noteName: name)
     }
     
-    func setFields(){
+    private func setFields(){
+        let noteDate = note?.value(forKey: "date") as? Date
+        let date = dateFormatterService.dateToString(date: noteDate!)
+        
         nameLabel.text = note?.value(forKey: "name") as? String
-        dateLabel.text = note?.value(forKey: "date") as? String
+        dateLabel.text = date
         entryTextView.text = note?.value(forKey: "entry") as? String
     }
     
+    private func checkIfSoundFileAvailable(){
+        if(!fileManagerService.isSoundFileUrlAvailable(fileName: name)){
+            playButton.isHidden = true
+        }
+        
+    }
+    
     @IBAction func deleteNote(_ sender: Any) {
-        repository.delete(note: note as! Note)
-        audioService.deleteSoundFile(noteName: name)
-        self.navigationController!.popViewController(animated: true)
+        let alertController = UIAlertController(title: name, message: NSLocalizedString("delete_message", comment: ""), preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: NSLocalizedString("delete", comment: ""), style: .default) { (action) in
+            self.repository.delete(note: self.note as! Note)
+            self.fileManagerService.deleteSoundFile(fileName: self.name)
+            self.navigationController!.popViewController(animated: true)
+        }
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .destructive, handler: nil)
+
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     
     @IBAction func playVoiceMessage(_ sender: Any) {
         audioService.play()
     }
+    
     /*
     // MARK: - Navigation
 

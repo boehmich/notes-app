@@ -10,33 +10,26 @@ import Foundation
 import AVFoundation
 
 class AVAudioRecorderPlayerService{
+    let fileManagerService = FileManagerService()
     
     var soundFileUrl: URL!
-    let defaultName: String = "note"
     var recordingSettings: [String : Any]!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     
     
     func prepareAudioRecorder(){
-        setSoundFile(soundFileName: defaultName)
-
+        soundFileUrl = fileManagerService.getSoundFileUrl(soundFileName: Constants.defaultSoundFileName)
+        
         setAudioSession()
         
         setRecordingSettings()
     }
     
     func prepareAudioPlayer(noteName: String){
-        setSoundFile(soundFileName: noteName)
+        soundFileUrl = fileManagerService.getSoundFileUrl(soundFileName: noteName)
         
         setAudioSession()
-    }
-    
-    private func setSoundFile(soundFileName: String){
-        let fileManager = FileManager.default
-        let dirPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-        soundFileUrl = dirPath[0].appendingPathComponent("\(soundFileName).caf")
-        
     }
     
     private func setAudioSession(){
@@ -67,8 +60,6 @@ class AVAudioRecorderPlayerService{
         }
 
         audioRecorder.record()
-        
-    
     }
     
     func stopRecording(){
@@ -84,33 +75,5 @@ class AVAudioRecorderPlayerService{
         } catch let error as NSError {
             print(error)
         }
-    }
-    
-    func updateSoundFileUrl(fileName: String){
-        let documentDirectory = getDocumentDirectory()
-        let originPath = documentDirectory.appendingPathComponent("\(defaultName).caf")
-        let destinationPath = documentDirectory.appendingPathComponent("\(fileName).caf")
-        
-        do {
-            try FileManager.default.moveItem(at: originPath, to: destinationPath)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func deleteSoundFile(noteName: String){
-        let documentDirectory = getDocumentDirectory()
-        let path = documentDirectory.appendingPathComponent("\(noteName).caf")
-        
-        do {
-            try FileManager.default.removeItem(at: path)
-        } catch {
-            print(error)
-        }
-    }
-    
-    private func getDocumentDirectory() -> URL{
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        return URL(fileURLWithPath: path)
     }
 }

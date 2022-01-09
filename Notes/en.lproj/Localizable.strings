@@ -19,5 +19,7 @@
 "voice_message" = "Voice Message";
 "record" = "record";
 "stop" = "stop";
+"cancel" = "cancel";
+"delete_message" = "Do you really want to delete this note?";
 
 

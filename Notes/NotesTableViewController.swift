@@ -19,7 +19,8 @@ class NotesTableViewCell: UITableViewCell{
 
 class NotesTableViewController: UITableViewController {
     let repository = Repository()
-    let mockData = MockData()
+    let mockDataService = MockDataService()
+    let dateFormatterService = DateFormatterService()
     var notesList = [Note]()
     
     override func viewDidLoad() {
@@ -56,7 +57,9 @@ class NotesTableViewController: UITableViewController {
         let note = notesList[indexPath.row]
         
         cell.notesNameLabel?.text = note.name
-        cell.notesDateLabel?.text = note.date
+        
+        let date = dateFormatterService.dateToString(date: note.date!)
+        cell.notesDateLabel?.text = date
         cell.notesImageView?.image = UIImage(named: "note")
         
         return cell
