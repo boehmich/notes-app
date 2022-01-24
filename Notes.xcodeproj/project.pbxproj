@@ -14,6 +14,7 @@
 		3B896BE327858CC40062D901 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B896BE227858CC40062D901 /* Repository.swift */; };
 		3B896BE52785A1410062D901 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B896BE42785A1410062D901 /* NoteViewController.swift */; };
 		3B896BE82785FA760062D901 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B896BEA2785FA760062D901 /* Localizable.strings */; };
+		3BA76C73278DB8E000D45381 /* AlertDialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA76C72278DB8E000D45381 /* AlertDialogService.swift */; };
 		3BFC8F9C2784BA720038BDBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8F9B2784BA720038BDBB /* AppDelegate.swift */; };
 		3BFC8F9E2784BA720038BDBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC8F9D2784BA720038BDBB /* SceneDelegate.swift */; };
 		3BFC8FA32784BA720038BDBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFC8FA12784BA720038BDBB /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		3B896BEB2785FB110062D901 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		3B896BEC2785FB110062D901 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3B896BED2785FB110062D901 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3BA76C72278DB8E000D45381 /* AlertDialogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogService.swift; sourceTree = "<group>"; };
 		3BFC8F982784BA720038BDBB /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFC8F9B2784BA720038BDBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BFC8F9D2784BA720038BDBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				3B10AEB42788E8C80014CFF6 /* MockDataService.swift */,
 				3B10AEB62788FEE60014CFF6 /* DateFormatterService.swift */,
 				3B29E011278ACC9800EABA4A /* FileManagerService.swift */,
+				3BA76C72278DB8E000D45381 /* AlertDialogService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				3BFC8FB32784BBC40038BDBB /* NotesTableViewController.swift in Sources */,
 				3BFC8F9E2784BA720038BDBB /* SceneDelegate.swift in Sources */,
 				3B10AEB72788FEE60014CFF6 /* DateFormatterService.swift in Sources */,
+				3BA76C73278DB8E000D45381 /* AlertDialogService.swift in Sources */,
 				3B7682C727870E8F00CEF2EF /* AVAudioRecorderPlayerService.swift in Sources */,
 				3BFC8FB52784BED90038BDBB /* GlobalConstants.swift in Sources */,
 				3BFC8FA62784BA720038BDBB /* Notes.xcdatamodeld in Sources */,

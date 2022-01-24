@@ -16,7 +16,6 @@ struct newNote {
     var entry: String
 }
 
-
 class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     let repository = Repository()
     let dateFormatterService = DateFormatterService()
@@ -36,14 +35,17 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordingImageView: UIImageView!
     
+    var datePicker: UIDatePicker!
     var didRecord = false
     var timer: Timer!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setLocalization()
-        entryTextView.delegate = self
+        nameTextField.delegate = self
         dateTextField.delegate = self
+        entryTextView.delegate = self
         
         audioService.prepareAudioRecorder()
         styleRecordingImageView()
@@ -58,12 +60,12 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     
     
     func setDatePicker(){
-        let datePickerView = UIDatePicker()
-        datePickerView.datePickerMode = .date
-        dateTextField.inputView = datePickerView
-        datePickerView.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
-
+        datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+        datePicker.datePickerMode = .date
+        dateTextField.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
     }
+
     
     @objc func handleDatePicker(sender: UIDatePicker) {
         dateTextField.text = dateFormatterService.dateToString(date: sender.date)
@@ -73,11 +75,8 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         self.view.endEditing(true)
     }
     
-    
-    private func styleRecordingImageView(){
-        recordingImageView.isHidden = true
-        self.recordingImageView.layer.cornerRadius = self.recordingImageView.frame.size.height/2
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.nameTextField.resignFirstResponder()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView){
@@ -86,6 +85,11 @@ class EntryViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         }
     }
     
+    private func styleRecordingImageView(){
+        recordingImageView.isHidden = true
+        self.recordingImageView.layer.cornerRadius = self.recordingImageView.frame.size.height/2
+
+    }
 
     @IBAction func recordButtonPressed(_ sender: Any) {
         didRecord = true

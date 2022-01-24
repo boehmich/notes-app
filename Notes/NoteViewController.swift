@@ -15,6 +15,7 @@ class NoteViewController: UIViewController, UIAlertViewDelegate {
     let audioService = AVAudioRecorderPlayerService()
     let dateFormatterService = DateFormatterService()
     let fileManagerService = FileManagerService()
+    let alertDialogService = AlertDialogService()
     var note: NSManagedObject?
     var name: String!
      
@@ -56,20 +57,17 @@ class NoteViewController: UIViewController, UIAlertViewDelegate {
     }
     
     @IBAction func deleteNote(_ sender: Any) {
-        let alertController = UIAlertController(title: name, message: NSLocalizedString("delete_message", comment: ""), preferredStyle: .actionSheet)
-        
-        let deleteAction = UIAlertAction(title: NSLocalizedString("delete", comment: ""), style: .default) { (action) in
-            self.repository.delete(note: self.note as! Note)
-            self.fileManagerService.deleteSoundFile(fileName: self.name)
-            self.navigationController!.popViewController(animated: true)
-        }
-        
-        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .destructive, handler: nil)
-
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
+        let alertController = alertDialogService.getAlertController(title: name, deleteAction: finishDeleteProcess)
         
         self.present(alertController, animated: true, completion: nil)
+
+        
+    }
+    
+    func finishDeleteProcess(){
+        self.repository.delete(note: self.note as! Note)
+        self.fileManagerService.deleteSoundFile(fileName: self.name)
+        self.navigationController!.popViewController(animated: true)
     }
     
     
@@ -88,6 +86,26 @@ class NoteViewController: UIViewController, UIAlertViewDelegate {
     */
 
 }
+
+/*
+ Dialog
+
+ 
+       let alertController = UIAlertController(title: name, message: NSLocalizedString("delete_message", comment: ""), preferredStyle: .actionSheet)
+       
+       let deleteAction = UIAlertAction(title: NSLocalizedString("delete", comment: ""), style: .default) { (action) in
+           self.repository.delete(note: self.note as! Note)
+           self.fileManagerService.deleteSoundFile(fileName: self.name)
+           self.navigationController!.popViewController(animated: true)
+       }
+       
+       let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .destructive, handler: nil)
+
+       alertController.addAction(deleteAction)
+       alertController.addAction(cancelAction)
+       
+       self.present(alertController, animated: true, completion: nil)
+*/
 
 /*
  var audioPlayer: AVAudioPlayer!
