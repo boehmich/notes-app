@@ -13,7 +13,7 @@ class NotesTableViewCell: UITableViewCell{
     
     @IBOutlet weak var notesNameLabel: UILabel!
     @IBOutlet weak var notesDateLabel: UILabel!
-    @IBOutlet weak var notesImageView: UIImageView!
+    //@IBOutlet weak var notesImageView: UIImageView!
 }
 
 
@@ -60,7 +60,7 @@ class NotesTableViewController: UITableViewController {
         
         let date = dateFormatterService.dateToString(date: note.date!)
         cell.notesDateLabel?.text = date
-        cell.notesImageView?.image = UIImage(named: "note")
+        //cell.notesImageView?.image = UIImage(named: "note")
         
         return cell
     }
