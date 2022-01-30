@@ -137,6 +137,9 @@
 		3BFC8F902784BA720038BDBB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					Scrollview,
+				);
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = boehmich;

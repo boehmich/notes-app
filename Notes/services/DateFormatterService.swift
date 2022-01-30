@@ -26,6 +26,3 @@ class DateFormatterService{
     }
 }
 
-//let dateFormatter = DateFormatter()
-//dateFormatter.dateFormat = "dd.MM.yyyy"
-//dateFormatter.timeZone = TimeZone(abbreviation: "GMT+00:00")//Add this
