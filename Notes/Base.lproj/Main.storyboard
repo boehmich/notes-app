@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6e-m8-Mls">
-                                <rect key="frame" x="0.0" y="44" width="414" height="1300"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB5-CZ-yAX" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
@@ -188,7 +188,7 @@
                             <constraint firstItem="MbL-Ou-Tds" firstAttribute="trailing" secondItem="o6e-m8-Mls" secondAttribute="trailing" id="UQL-BK-SIi"/>
                             <constraint firstItem="o6e-m8-Mls" firstAttribute="top" secondItem="MbL-Ou-Tds" secondAttribute="top" id="WfP-oC-fYJ"/>
                             <constraint firstItem="o6e-m8-Mls" firstAttribute="leading" secondItem="MbL-Ou-Tds" secondAttribute="leading" id="vNV-6k-52u"/>
-                            <constraint firstItem="o6e-m8-Mls" firstAttribute="bottom" secondItem="MbL-Ou-Tds" secondAttribute="bottom" constant="531" id="xRx-5F-TqF"/>
+                            <constraint firstItem="o6e-m8-Mls" firstAttribute="bottom" secondItem="MbL-Ou-Tds" secondAttribute="bottom" id="xRx-5F-TqF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MbL-Ou-Tds"/>
                     </view>
@@ -256,20 +256,33 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wwJ-qM-ufp">
+                                            <rect key="frame" x="243" y="10" width="110" height="110"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="110" id="C29-S8-mBf"/>
+                                                <constraint firstAttribute="width" constant="110" id="MWr-ku-lSb"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="tey-Lb-Ptf" firstAttribute="leading" secondItem="MZz-IW-qok" secondAttribute="leadingMargin" id="033-QW-pc7"/>
+                                        <constraint firstItem="wwJ-qM-ufp" firstAttribute="top" secondItem="MZz-IW-qok" secondAttribute="top" constant="10" id="1Ta-Hd-Q6B"/>
+                                        <constraint firstItem="wwJ-qM-ufp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6OG-Ua-tuU" secondAttribute="trailing" constant="8" symbolic="YES" id="4ot-Ko-hmH"/>
                                         <constraint firstItem="6OG-Ua-tuU" firstAttribute="top" secondItem="tey-Lb-Ptf" secondAttribute="bottom" constant="10" id="6Fs-R0-mCg"/>
                                         <constraint firstItem="6OG-Ua-tuU" firstAttribute="leading" secondItem="MZz-IW-qok" secondAttribute="leadingMargin" id="INd-iu-cpT"/>
                                         <constraint firstItem="tey-Lb-Ptf" firstAttribute="top" secondItem="MZz-IW-qok" secondAttribute="topMargin" id="JVN-fE-Agv"/>
                                         <constraint firstItem="tey-Lb-Ptf" firstAttribute="leading" secondItem="MZz-IW-qok" secondAttribute="leadingMargin" id="Nep-Tn-roE"/>
+                                        <constraint firstItem="wwJ-qM-ufp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tey-Lb-Ptf" secondAttribute="trailing" constant="8" symbolic="YES" id="QO2-l7-WHf"/>
                                         <constraint firstItem="tey-Lb-Ptf" firstAttribute="top" secondItem="MZz-IW-qok" secondAttribute="topMargin" id="Xdn-rQ-V6J"/>
                                         <constraint firstItem="6OG-Ua-tuU" firstAttribute="top" secondItem="tey-Lb-Ptf" secondAttribute="bottom" constant="10" id="kGx-yh-UjI"/>
+                                        <constraint firstAttribute="trailing" secondItem="wwJ-qM-ufp" secondAttribute="trailing" constant="30" id="kLF-pe-nR5"/>
                                         <constraint firstItem="6OG-Ua-tuU" firstAttribute="leading" secondItem="MZz-IW-qok" secondAttribute="leadingMargin" id="ukV-Hh-bEh"/>
+                                        <constraint firstAttribute="bottom" secondItem="wwJ-qM-ufp" secondAttribute="bottom" constant="10" id="w3x-MK-m70"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="notesDateLabel" destination="6OG-Ua-tuU" id="qoZ-TP-2Jd"/>
+                                    <outlet property="notesImageView" destination="wwJ-qM-ufp" id="fSP-Wq-Kn0"/>
                                     <outlet property="notesNameLabel" destination="tey-Lb-Ptf" id="VEy-HU-E6g"/>
                                     <segue destination="6tI-cc-YDw" kind="show" identifier="Note" id="TxC-wd-2qi"/>
                                 </connections>
